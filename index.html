@@ -1,369 +1,1038 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TerriNuts | Fresh Peanuts in Nairobi</title>
-<style>
-:root {
-  --brown: #402516;
-  --gold: #c58b36;
-  --cream: #fff9ef;
-  --dark: #24170f;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: Arial, sans-serif;
-  background: var(--cream);
-  color: var(--dark);
-  line-height: 1.6;
-}
-header {
-  background: #fffdf8;
-  padding: 12px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  box-shadow: 0 3px 15px #40251616;
-}
-.logo img {
-  width: 155px;
-  max-height: 85px;
-  object-fit: contain;
-}
-nav { display: flex; gap: 24px; align-items: center; }
-nav a {
-  color: var(--brown);
-  text-decoration: none;
-  font-weight: bold;
-}
-nav a:hover { color: var(--gold); }
-.order-button, button {
-  background: var(--brown);
-  color: white;
-  border: 0;
-  border-radius: 30px;
-  padding: 13px 22px;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-.order-button:hover, button:hover { background: var(--gold); }
-.hero {
-  min-height: 510px;
-  padding: 80px 8%;
-  display: flex;
-  align-items: center;
-  background:
-    radial-gradient(circle at 80% 40%, #d9ad674d, transparent 30%),
-    linear-gradient(120deg, #fff7e8, #f1dfc2);
-}
-.hero-content { max-width: 650px; }
-.eyebrow {
-  color: #9b6725;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 13px;
-}
-h1 {
-  color: var(--brown);
-  font-family: Georgia, serif;
-  font-size: clamp(42px, 7vw, 76px);
-  line-height: 1.08;
-  margin: 18px 0;
-}
-h1 span { color: var(--gold); }
-.hero p { max-width: 520px; font-size: 18px; margin-bottom: 28px; }
-.hero-note {
-  margin-top: 20px;
-  color: #765b42;
-  font-size: 14px;
-}
-.peanut-art {
-  font-size: 150px;
-  margin-left: auto;
-  padding: 35px;
-  filter: drop-shadow(0 15px 12px #6e431b33);
-  animation: float 4s ease-in-out infinite;
-}
-@keyframes float {
-  0%,100% { transform: translateY(0) rotate(-8deg); }
-  50% { transform: translateY(-14px) rotate(5deg); }
-}
-section { padding: 75px 8%; }
-.section-heading { text-align: center; margin-bottom: 38px; }
-.section-heading h2 {
-  color: var(--brown);
-  font: bold 38px Georgia, serif;
-  margin-bottom: 10px;
-}
-.section-heading p { color: #766451; }
-.about {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 45px;
-  align-items: center;
-}
-.about-art {
-  min-height: 280px;
-  border-radius: 24px;
-  background: linear-gradient(145deg, #ead2a9, #c58b36);
-  display: grid;
-  place-items: center;
-  font-size: 120px;
-}
-.about h2 { font: bold 36px Georgia, serif; color: var(--brown); margin-bottom: 15px; }
-.about p { margin-bottom: 14px; }
-.product-card {
-  max-width: 440px;
-  margin: auto;
-  background: white;
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 12px 35px #40251616;
-  text-align: center;
-}
-.product-image {
-  background: linear-gradient(135deg, #e9d0a6, #f9edda);
-  padding: 35px;
-  font-size: 100px;
-}
-.product-info { padding: 25px; }
-.product-info h3 { color: var(--brown); font: bold 27px Georgia, serif; }
-.price { color: #a66d20; font-size: 30px; font-weight: bold; margin: 12px 0; }
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-.gallery-card {
-  background: #f0dfc3;
-  border-radius: 18px;
-  min-height: 170px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 25px;
-  color: var(--brown);
-}
-.gallery-card span { font-size: 65px; display: block; }
-.checkout {
-  background: #f1e3ce;
-}
-.order-panel {
-  max-width: 650px;
-  margin: auto;
-  background: white;
-  padding: 30px;
-  border-radius: 22px;
-  box-shadow: 0 10px 30px #40251614;
-}
-form { display: grid; gap: 15px; }
-label { font-weight: bold; color: var(--brown); }
-input, textarea {
-  width: 100%;
-  padding: 13px;
-  border: 1px solid #d8c6ae;
-  border-radius: 10px;
-  font: inherit;
-  margin-top: 6px;
-}
-textarea { min-height: 90px; resize: vertical; }
-.total {
-  background: var(--cream);
-  padding: 15px;
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--brown);
-}
-form button { font-size: 16px; }
-.small-note { font-size: 13px; color: #766451; }
-.contact {
-  text-align: center;
-  background: var(--brown);
-  color: white;
-}
-.contact h2 { color: #f2ce91; font: bold 36px Georgia, serif; margin-bottom: 15px; }
-.contact a { color: #f2ce91; }
-footer {
-  text-align: center;
-  padding: 22px;
-  background: #21140d;
-  color: #ead9c3;
-  font-size: 13px;
-}
-@media (max-width: 700px) {
-  header { flex-direction: column; }
-  nav { flex-wrap: wrap; justify-content: center; gap: 13px; }
-  .hero { text-align: center; padding: 60px 7%; }
-  .peanut-art { margin: 20px auto 0; font-size: 100px; }
-  .about { grid-template-columns: 1fr; }
-  .gallery { grid-template-columns: 1fr; }
-  section { padding: 55px 7%; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#24170f">
+  <meta name="description" content="TerriNuts - Quality peanuts in Nairobi, Kenya. 250g pack for KSh 100.">
+  <title>TerriNuts | A Taste of Goodness</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --dark: #24170f;
+      --brown: #50321f;
+      --brown-light: #765034;
+      --gold: #d7a84b;
+      --cream: #fbf5e9;
+      --white: #fffdf8;
+      --muted: #786b5d;
+      --green: #247b48;
+      --shadow: 0 18px 50px rgba(36, 23, 15, .10);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+
+    .topbar {
+      background: var(--dark);
+      color: #f8e7c3;
+      text-align: center;
+      padding: 8px 15px;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,253,248,.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #eee4d5;
+    }
+
+    .nav {
+      max-width: 1180px;
+      min-height: 82px;
+      padding: 12px 24px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand img {
+      display: block;
+      width: 165px;
+      max-height: 65px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: var(--brown-light); }
+
+    .nav-cta, .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 23px;
+      font-weight: 700;
+      transition: .25s ease;
+    }
+
+    .nav-cta, .btn-primary {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .nav-cta:hover, .btn-primary:hover {
+      background: #e8bd68;
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: var(--dark);
+      font-size: 27px;
+    }
+
+    .hero {
+      overflow: hidden;
+      position: relative;
+      background:
+        radial-gradient(circle at 80% 25%, rgba(215,168,75,.18), transparent 28%),
+        linear-gradient(120deg, #24170f 0%, #49301d 58%, #68472b 100%);
+      color: white;
+    }
+
+    .hero-inner {
+      max-width: 1180px;
+      min-height: 570px;
+      padding: 85px 24px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(43px, 6vw, 72px);
+      max-width: 680px;
+      margin-bottom: 22px;
+    }
+
+    h1 span { color: var(--gold); }
+
+    .hero-copy {
+      color: #e8d9c5;
+      max-width: 530px;
+      font-size: 17px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .btn-outline {
+      color: white;
+      border: 1px solid rgba(255,255,255,.55);
+      background: transparent;
+    }
+
+    .btn-outline:hover { background: rgba(255,255,255,.1); }
+
+    .hero-art {
+      min-height: 350px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .peanut-orbit {
+      width: min(350px, 75vw);
+      aspect-ratio: 1;
+      border: 1px solid rgba(215,168,75,.35);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      animation: float 5s ease-in-out infinite;
+      background: radial-gradient(circle, rgba(215,168,75,.18), transparent 68%);
+    }
+
+    .peanut-display {
+      font-size: clamp(120px, 19vw, 190px);
+      filter: drop-shadow(0 20px 18px rgba(0,0,0,.25));
+      transform: rotate(-18deg);
+    }
+
+    .orbit-note {
+      position: absolute;
+      bottom: 25px;
+      right: 5px;
+      background: var(--gold);
+      color: var(--dark);
+      border-radius: 15px;
+      padding: 13px 19px;
+      box-shadow: var(--shadow);
+      font-weight: 700;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-13px); }
+    }
+
+    .trust-strip {
+      background: var(--cream);
+      padding: 22px 15px;
+    }
+
+    .trust-inner {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 18px;
+      text-align: center;
+      color: var(--brown);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    section { padding: 88px 24px; }
+
+    .container { max-width: 1120px; margin: auto; }
+
+    .section-heading {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 45px;
+    }
+
+    .section-heading .eyebrow { color: var(--brown-light); }
+
+    h2 {
+      font-size: clamp(34px, 4vw, 48px);
+      margin-bottom: 15px;
+    }
+
+    .section-heading p { color: var(--muted); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .about-visual {
+      min-height: 360px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(215,168,75,.35), transparent 48%),
+        linear-gradient(145deg, #f4e4c7, #e7c995);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .about-visual span {
+      font-size: 150px;
+      filter: drop-shadow(0 16px 12px rgba(60,35,15,.16));
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .about-copy h2 { margin-bottom: 20px; }
+    .about-copy p { color: var(--muted); margin-bottom: 17px; }
+
+    .about-points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+      margin-top: 24px;
+    }
+
+    .point {
+      padding: 14px;
+      background: var(--cream);
+      border-radius: 13px;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--brown);
+    }
+
+    .product-section { background: var(--cream); }
+
+    .product-card {
+      max-width: 850px;
+      margin: auto;
+      background: var(--white);
+      border: 1px solid #eee2d0;
+      border-radius: 25px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 35px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .product-art {
+      min-height: 280px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #f1dfbf, #dfbd83);
+      display: grid;
+      place-items: center;
+      font-size: 125px;
+    }
+
+    .product-info h3 { font-size: 32px; margin-bottom: 12px; }
+    .product-info p { color: var(--muted); margin-bottom: 18px; }
+
+    .price {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--brown);
+      margin-bottom: 18px;
+    }
+
+    .price small {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .product-tag {
+      display: inline-block;
+      background: #f6ead3;
+      color: var(--brown);
+      border-radius: 30px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .gallery-card {
+      min-height: 210px;
+      border-radius: 20px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--cream);
+      transition: .3s ease;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-card span { font-size: 65px; margin-bottom: 12px; }
+    .gallery-card h3 { font-size: 20px; margin-bottom: 5px; }
+    .gallery-card p { color: var(--muted); font-size: 13px; }
+
+    .order-section {
+      background: linear-gradient(130deg, #24170f, #49301d);
+      color: white;
+    }
+
+    .order-section .section-heading p { color: #e4d4c0; }
+    .order-section .section-heading .eyebrow { color: var(--gold); }
+
+    .form-card {
+      max-width: 760px;
+      margin: auto;
+      padding: 34px;
+      border-radius: 25px;
+      background: var(--white);
+      color: var(--dark);
+      box-shadow: 0 20px 60px rgba(0,0,0,.18);
+    }
+
+    .form-intro {
+      margin-bottom: 25px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field { margin-bottom: 18px; }
+    .field.full { grid-column: 1 / -1; }
+
+    label {
+      display: block;
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 7px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid #e4d8c8;
+      background: #fffefa;
+      color: var(--dark);
+      border-radius: 11px;
+      outline: none;
+      transition: border .2s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(215,168,75,.13);
+    }
+
+    textarea { min-height: 115px; resize: vertical; }
+
+    .form-total {
+      padding: 15px 17px;
+      border-radius: 12px;
+      background: var(--cream);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5px 0 20px;
+      font-weight: 700;
+    }
+
+    .form-total strong { font-size: 22px; color: var(--brown); }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .form-actions button { flex: 1; min-width: 190px; }
+
+    .btn-whatsapp {
+      background: var(--green);
+      color: white;
+    }
+
+    .btn-whatsapp:hover { background: #1d663b; transform: translateY(-2px); }
+
+    .btn-submit:disabled { opacity: .65; cursor: wait; transform: none; }
+
+    .form-status {
+      margin-top: 17px;
+      font-size: 14px;
+      font-weight: 600;
+      min-height: 24px;
+    }
+
+    .form-status.success { color: #247b48; }
+    .form-status.error { color: #b42318; }
+
+    .privacy-note {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 14px;
+    }
+
+    .contact-section { background: var(--cream); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .contact-card {
+      background: var(--white);
+      padding: 25px;
+      border-radius: 18px;
+      text-align: center;
+      border: 1px solid #eee2d0;
+    }
+
+    .contact-card span { font-size: 30px; }
+    .contact-card h3 { font-size: 19px; margin: 10px 0 5px; }
+    .contact-card p, .contact-card a { color: var(--muted); font-size: 14px; }
+
+    footer {
+      background: var(--dark);
+      color: #e8d9c5;
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 13px;
+    }
+
+    footer strong { color: var(--gold); }
+
+    .float-whatsapp {
+      position: fixed;
+      z-index: 30;
+      right: 22px;
+      bottom: 22px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #25d366;
+      color: white;
+      font-size: 27px;
+      box-shadow: 0 8px 25px rgba(0,0,0,.2);
+      transition: .2s;
+    }
+
+    .float-whatsapp:hover { transform: scale(1.08); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        background: var(--white);
+        padding: 22px;
+        flex-direction: column;
+        border-bottom: 1px solid #eee2d0;
+      }
+
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: block; }
+      .nav-cta { display: none; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 65px;
+      }
+
+      .hero-copy { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-art { min-height: 270px; }
+      .peanut-orbit { width: 260px; }
+      .about-grid, .product-card { grid-template-columns: 1fr; }
+      .about-visual { min-height: 260px; }
+      .product-art { min-height: 230px; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 65px 18px; }
+      .nav { padding: 10px 18px; }
+      .brand img { width: 140px; }
+      .gallery-grid, .contact-grid { grid-template-columns: 1fr; }
+      .form-card { padding: 23px 18px; }
+      .form-grid { grid-template-columns: 1fr; gap: 0; }
+      .field.full { grid-column: auto; }
+      .about-points { grid-template-columns: 1fr; }
+      .trust-inner { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="topbar">TERRINUTS · NAIROBI, KENYA · A LITTLE TASTE OF GOODNESS</div>
 
-<header>
-  <a class="logo" href="#home">
-    <img src="TerriNuts%20Peanut%20Harvest%20Logo.png" alt="TerriNuts logo">
-  </a>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#product">Product</a>
-    <a href="#order">Order</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <a class="order-button" href="#order">Order Now</a>
-</header>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="#home" aria-label="TerriNuts home">
+        <img src="TerriNuts%20Peanut%20Harvest%20Logo.png" alt="TerriNuts logo">
+      </a>
 
-<main>
-  <div class="hero" id="home">
-    <div class="hero-content">
-      <div class="eyebrow">A little taste of goodness</div>
-      <h1>Goodness in<br>every <span>peanut.</span></h1>
-      <p>Discover TerriNuts peanuts, packed in a convenient 250g size. Simple, tasty goodness from Nairobi, Kenya.</p>
-      <a class="order-button" href="#order">Place an Order</a>
-      <div class="hero-note">TerriNuts · Nairobi, Kenya</div>
-    </div>
-    <div class="peanut-art" aria-hidden="true">🥜</div>
-  </div>
-
-  <section id="about">
-    <div class="about">
-      <div class="about-art" aria-hidden="true">🥜</div>
-      <div>
-        <div class="eyebrow">Welcome to TerriNuts</div>
-        <h2>Small pack. Big peanut goodness.</h2>
-        <p>TerriNuts brings you peanuts in a handy 250g pack, perfect for enjoying and sharing.</p>
-        <p>We're based in Nairobi, Kenya. Place your order using our simple WhatsApp checkout.</p>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">Our Story</a>
+        <a href="#product">Our Product</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
       </div>
-    </div>
-  </section>
 
-  <section id="product">
-    <div class="section-heading">
-      <h2>Our Product</h2>
-      <p>One product, one simple price.</p>
-    </div>
-    <div class="product-card">
-      <div class="product-image" aria-hidden="true">🥜</div>
-      <div class="product-info">
-        <h3>TerriNuts Peanuts</h3>
-        <p>250g pack</p>
-        <div class="price">KSh 100</div>
-        <a class="order-button" href="#order">Order This Product</a>
-      </div>
-    </div>
-  </section>
+      <a class="nav-cta" href="#order">Order Now ↗</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    </nav>
+  </header>
 
-  <section>
-    <div class="section-heading">
-      <h2>A Peanut-Loving Kind of Goodness</h2>
-      <p>TerriNuts keeps it simple: peanuts in every pack.</p>
-    </div>
-    <div class="gallery">
-      <div class="gallery-card"><div><span>🥜</span><strong>Peanut goodness</strong></div></div>
-      <div class="gallery-card"><div><span>🌰</span><strong>Ready to enjoy</strong></div></div>
-      <div class="gallery-card"><div><span>🤎</span><strong>Made for sharing</strong></div></div>
-    </div>
-  </section>
-
-  <section class="checkout" id="order">
-    <div class="section-heading">
-      <h2>Place Your Order</h2>
-      <p>Enter your details and send your order directly to TerriNuts on WhatsApp.</p>
-    </div>
-    <div class="order-panel">
-      <form id="orderForm">
-        <label>
-          Your name
-          <input id="customerName" type="text" placeholder="Enter your name" required>
-        </label>
-        <label>
-          Your phone number
-          <input id="customerPhone" type="tel" placeholder="Enter your phone number" required>
-        </label>
-        <label>
-          Your location
-          <input id="customerLocation" type="text" placeholder="e.g. Nairobi, Kasarani" required>
-        </label>
-        <label>
-          Quantity (250g packs)
-          <input id="quantity" type="number" min="1" value="1" required>
-        </label>
-        <label>
-          Extra instructions (optional)
-          <textarea id="instructions" placeholder="Any additional order information?"></textarea>
-        </label>
-        <div class="total">
-          <span>Total</span>
-          <span id="totalPrice">KSh 100</span>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div class="reveal">
+          <div class="eyebrow">Welcome to TerriNuts</div>
+          <h1>A little crunch.<br>A lot of <span>goodness.</span></h1>
+          <p class="hero-copy">
+            Discover TerriNuts peanuts, available in a convenient 250g pack.
+            Simple goodness, ready to enjoy.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#order">Order Your Pack</a>
+            <a class="btn btn-outline" href="#about">Discover TerriNuts</a>
+          </div>
         </div>
-        <button type="submit">Send Order on WhatsApp</button>
-        <p class="small-note">This sends your order details to WhatsApp. Payment is not collected on this website.</p>
-      </form>
+
+        <div class="hero-art">
+          <div class="peanut-orbit">
+            <div class="peanut-display" aria-label="Peanuts">🥜</div>
+          </div>
+          <div class="orbit-note">250g · KSh 100</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="trust-inner">
+        <span>🥜 250g PACK</span>
+        <span>🇰🇪 NAIROBI, KENYA</span>
+        <span>💛 TERRINUTS GOODNESS</span>
+      </div>
     </div>
-  </section>
 
-  <section class="contact" id="contact">
-    <h2>Get in Touch</h2>
-    <p>Have a question or want to place an order?</p>
-    <p>Phone: <a href="tel:0718188346">0718 188 346</a></p>
-    <p>WhatsApp: <a href="https://wa.me/254718188346">Chat with TerriNuts</a></p>
-    <p>Location: Nairobi, Kenya</p>
-  </section>
-</main>
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-visual reveal">
+          <span>🥜</span>
+        </div>
 
-<footer>
-  © <span id="year"></span> TerriNuts. All rights reserved.
-</footer>
+        <div class="about-copy reveal">
+          <div class="eyebrow">A little about us</div>
+          <h2>Welcome to the TerriNuts family.</h2>
+          <p>
+            TerriNuts is a Nairobi-based peanut brand bringing you a
+            convenient pack of peanuts to enjoy and share.
+          </p>
+          <p>
+            Whether you are shopping for yourself or making an inquiry,
+            we are happy to hear from you.
+          </p>
 
-<script>
-const quantityInput = document.getElementById("quantity");
-const totalPrice = document.getElementById("totalPrice");
-const pricePerPack = 100;
+          <div class="about-points">
+            <div class="point">🥜 250g peanut pack</div>
+            <div class="point">📍 Nairobi, Kenya</div>
+            <div class="point">💬 WhatsApp inquiries</div>
+            <div class="point">✉️ Email inquiries</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-function updateTotal() {
-  let quantity = Math.max(1, Number(quantityInput.value) || 1);
-  totalPrice.textContent = "KSh " + (quantity * pricePerPack).toLocaleString("en-KE");
-}
-quantityInput.addEventListener("input", updateTotal);
-document.getElementById("year").textContent = new Date().getFullYear();
+    <section class="product-section" id="product">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">From TerriNuts</div>
+          <h2>Our Product</h2>
+          <p>One convenient pack, ready for you.</p>
+        </div>
 
-document.getElementById("orderForm").addEventListener("submit", function(event) {
-  event.preventDefault();
+        <div class="product-card reveal">
+          <div class="product-art">🥜</div>
+          <div class="product-info">
+            <span class="product-tag">TERRINUTS FAVOURITE</span>
+            <h3>TerriNuts Peanuts</h3>
+            <p>A 250g pack of TerriNuts peanuts.</p>
+            <div class="price">KSh 100 <small>/ 250g pack</small></div>
+            <a href="#order" class="btn btn-primary">Order This Product ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  const name = document.getElementById("customerName").value.trim();
-  const phone = document.getElementById("customerPhone").value.trim();
-  const location = document.getElementById("customerLocation").value.trim();
-  const quantity = Math.max(1, Number(quantityInput.value) || 1);
-  const instructions = document.getElementById("instructions").value.trim();
-  const total = quantity * pricePerPack;
+    <section id="gallery">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">The TerriNuts feel</div>
+          <h2>Goodness in every pack.</h2>
+          <p>Discover the simple TerriNuts experience.</p>
+        </div>
 
-  const message =
-    "Hello TerriNuts! I would like to place an order.%0A%0A" +
-    "Name: " + encodeURIComponent(name) + "%0A" +
-    "Phone: " + encodeURIComponent(phone) + "%0A" +
-    "Location: " + encodeURIComponent(location) + "%0A" +
-    "Product: TerriNuts Peanuts (250g)%0A" +
-    "Quantity: " + quantity + "%0A" +
-    "Total: KSh " + total + "%0A" +
-    "Instructions: " + encodeURIComponent(instructions || "None");
+        <div class="gallery-grid">
+          <div class="gallery-card reveal">
+            <span>🥜</span>
+            <h3>Peanut Goodness</h3>
+            <p>Our featured product.</p>
+          </div>
+          <div class="gallery-card reveal">
+            <span>🤎</span>
+            <h3>Made to Share</h3>
+            <p>A little something to enjoy.</p>
+          </div>
+          <div class="gallery-card reveal">
+            <span>🇰🇪</span>
+            <h3>From Nairobi</h3>
+            <p>Find TerriNuts in Kenya.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  window.open("https://wa.me/254718188346?text=" + message, "_blank");
-});
-</script>
+    <section class="order-section" id="order">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">Order or make an inquiry</div>
+          <h2>Let's hear from you.</h2>
+          <p>
+            Complete the form below. Your message will be sent to our
+            TerriNuts email, and WhatsApp will open with the same details.
+          </p>
+        </div>
+
+        <div class="form-card reveal">
+          <p class="form-intro">
+            Fill in your details and choose whether you are placing an order
+            or making a general inquiry.
+          </p>
+
+          <form id="terrInutsForm"
+                action="https://formspree.io/f/mnpdpaek"
+                method="POST">
+
+            <input type="hidden" name="_subject" value="New TerriNuts Website Inquiry">
+
+            <!-- Spam protection field -->
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="customerName">Your name *</label>
+                <input id="customerName" name="Customer name" type="text"
+                       placeholder="Enter your name" required>
+              </div>
+
+              <div class="field">
+                <label for="customerPhone">Phone number *</label>
+                <input id="customerPhone" name="Phone number" type="tel"
+                       placeholder="e.g. 07XXXXXXXX" required>
+              </div>
+
+              <div class="field">
+                <label for="customerEmail">Email address</label>
+                <input id="customerEmail" name="email" type="email"
+                       placeholder="you@example.com">
+              </div>
+
+              <div class="field">
+                <label for="customerLocation">Your location *</label>
+                <input id="customerLocation" name="Location" type="text"
+                       placeholder="Enter your area or location" required>
+              </div>
+
+              <div class="field">
+                <label for="requestType">What would you like to do? *</label>
+                <select id="requestType" name="Request type" required>
+                  <option value="Place an order">Place an order</option>
+                  <option value="Make an inquiry">Make an inquiry</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="quantity">Number of 250g packs</label>
+                <input id="quantity" name="Quantity" type="number"
+                       min="1" step="1" value="1">
+              </div>
+
+              <div class="field full">
+                <label for="customerMessage">Message or special instructions</label>
+                <textarea id="customerMessage" name="Message"
+                  placeholder="Tell us what you need..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-total">
+              <span>Estimated product total</span>
+              <strong id="totalPrice">KSh 100</strong>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn btn-primary btn-submit" id="submitButton" type="submit">
+                Send Inquiry & Continue ↗
+              </button>
+
+              <button class="btn btn-whatsapp" id="whatsappButton" type="button">
+                WhatsApp Us
+              </button>
+            </div>
+
+            <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+
+            <p class="privacy-note">
+              Your details are used to respond to your TerriNuts inquiry.
+              Submitting an inquiry does not confirm an order.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">Get in touch</div>
+          <h2>Contact TerriNuts</h2>
+          <p>We would be happy to hear from you.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card reveal">
+            <span>📱</span>
+            <h3>Call or WhatsApp</h3>
+            <a href="https://wa.me/254718188346" target="_blank" rel="noopener">
+              0718188346
+            </a>
+          </div>
+
+          <div class="contact-card reveal">
+            <span>✉️</span>
+            <h3>Email Us</h3>
+            <a href="mailto:terrinuts.orders@gmail.com">
+              terrinuts.orders@gmail.com
+            </a>
+          </div>
+
+          <div class="contact-card reveal">
+            <span>📍</span>
+            <h3>Our Location</h3>
+            <p>Nairobi, Kenya</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>TerriNuts</strong> · A little taste of goodness.</p>
+    <p>© <span id="year"></span> TerriNuts. All rights reserved.</p>
+  </footer>
+
+  <a class="float-whatsapp"
+     href="https://wa.me/254718188346?text=Hello%20TerriNuts%2C%20I%20would%20like%20to%20make%20an%20inquiry."
+     target="_blank" rel="noopener" aria-label="Chat with TerriNuts on WhatsApp">
+    ☎
+  </a>
+
+  <script>
+    const form = document.getElementById("terrInutsForm");
+    const quantityInput = document.getElementById("quantity");
+    const totalPrice = document.getElementById("totalPrice");
+    const statusBox = document.getElementById("formStatus");
+    const submitButton = document.getElementById("submitButton");
+    const whatsappButton = document.getElementById("whatsappButton");
+
+    const PRICE_PER_PACK = 100;
+    const WHATSAPP_NUMBER = "254718188346";
+
+    function getFormDetails() {
+      const data = new FormData(form);
+
+      const quantity = Math.max(
+        1,
+        parseInt(data.get("Quantity"), 10) || 1
+      );
+
+      return {
+        name: data.get("Customer name") || "",
+        phone: data.get("Phone number") || "",
+        email: data.get("email") || "",
+        location: data.get("Location") || "",
+        type: data.get("Request type") || "Make an inquiry",
+        quantity: quantity,
+        message: data.get("Message") || "",
+        total: quantity * PRICE_PER_PACK
+      };
+    }
+
+    function updateTotal() {
+      const quantity = Math.max(1, parseInt(quantityInput.value, 10) || 1);
+      totalPrice.textContent =
+        "KSh " + (quantity * PRICE_PER_PACK).toLocaleString("en-KE");
+    }
+
+    quantityInput.addEventListener("input", updateTotal);
+
+    function makeWhatsAppMessage(details) {
+      return [
+        "Hello TerriNuts!",
+        "",
+        "I have submitted a website inquiry.",
+        "Request: " + details.type,
+        "Name: " + details.name,
+        "Phone: " + details.phone,
+        "Email: " + (details.email || "Not provided"),
+        "Location: " + details.location,
+        "250g packs: " + details.quantity,
+        "Estimated product total: KSh " + details.total,
+        "Message: " + (details.message || "No additional message"),
+        "",
+        "Thank you."
+      ].join("\n");
+    }
+
+    function openWhatsApp(details) {
+      const message = encodeURIComponent(makeWhatsAppMessage(details));
+      const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + message;
+      window.open(url, "_blank", "noopener");
+    }
+
+    whatsappButton.addEventListener("click", function () {
+      if (!form.reportValidity()) return;
+      openWhatsApp(getFormDetails());
+    });
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      if (!form.reportValidity()) return;
+
+      const details = getFormDetails();
+
+      // Open a blank tab immediately so the browser is less likely
+      // to block WhatsApp after the email request completes.
+      const whatsappTab = window.open("about:blank", "_blank");
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending your inquiry...";
+      statusBox.className = "form-status";
+      statusBox.textContent = "Sending your details to TerriNuts...";
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+
+        if (!response.ok) {
+          let errorMessage = "We could not send your email inquiry. Please try again.";
+          try {
+            const result = await response.json();
+            if (result.errors && result.errors.length) {
+              errorMessage = result.errors.map(error => error.message).join(" ");
+            }
+          } catch (error) {}
+          throw new Error(errorMessage);
+        }
+
+        statusBox.className = "form-status success";
+        statusBox.textContent =
+          "Your inquiry was sent by email. WhatsApp is opening with your details.";
+
+        const whatsappUrl =
+          "https://wa.me/" + WHATSAPP_NUMBER + "?text=" +
+          encodeURIComponent(makeWhatsAppMessage(details));
+
+        if (whatsappTab && !whatsappTab.closed) {
+          whatsappTab.location.href = whatsappUrl;
+        } else {
+          statusBox.textContent =
+            "Your email was sent. If WhatsApp did not open, use the WhatsApp Us button.";
+        }
+
+        form.reset();
+        quantityInput.value = 1;
+        updateTotal();
+
+      } catch (error) {
+        if (whatsappTab && !whatsappTab.closed) whatsappTab.close();
+
+        statusBox.className = "form-status error";
+        statusBox.textContent =
+          error.message || "Something went wrong. Please try again or contact us on WhatsApp.";
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Send Inquiry & Continue ↗";
+      }
+    });
+
+    // Mobile navigation
+    document.getElementById("menuToggle").addEventListener("click", function () {
+      document.getElementById("navLinks").classList.toggle("open");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        document.getElementById("navLinks").classList.remove("open");
+      });
+    });
+
+    // Reveal sections as they enter the screen
+    const revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(function (element) {
+      revealObserver.observe(element);
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    updateTotal();
+  </script>
 </body>
 </html>
