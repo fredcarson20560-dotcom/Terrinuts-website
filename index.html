@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TerriNuts | Fresh Peanuts in Nairobi</title>
+<style>
+:root {
+  --brown: #402516;
+  --gold: #c58b36;
+  --cream: #fff9ef;
+  --dark: #24170f;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: Arial, sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  line-height: 1.6;
+}
+header {
+  background: #fffdf8;
+  padding: 12px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 3px 15px #40251616;
+}
+.logo img {
+  width: 155px;
+  max-height: 85px;
+  object-fit: contain;
+}
+nav { display: flex; gap: 24px; align-items: center; }
+nav a {
+  color: var(--brown);
+  text-decoration: none;
+  font-weight: bold;
+}
+nav a:hover { color: var(--gold); }
+.order-button, button {
+  background: var(--brown);
+  color: white;
+  border: 0;
+  border-radius: 30px;
+  padding: 13px 22px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+.order-button:hover, button:hover { background: var(--gold); }
+.hero {
+  min-height: 510px;
+  padding: 80px 8%;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(circle at 80% 40%, #d9ad674d, transparent 30%),
+    linear-gradient(120deg, #fff7e8, #f1dfc2);
+}
+.hero-content { max-width: 650px; }
+.eyebrow {
+  color: #9b6725;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+h1 {
+  color: var(--brown);
+  font-family: Georgia, serif;
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 1.08;
+  margin: 18px 0;
+}
+h1 span { color: var(--gold); }
+.hero p { max-width: 520px; font-size: 18px; margin-bottom: 28px; }
+.hero-note {
+  margin-top: 20px;
+  color: #765b42;
+  font-size: 14px;
+}
+.peanut-art {
+  font-size: 150px;
+  margin-left: auto;
+  padding: 35px;
+  filter: drop-shadow(0 15px 12px #6e431b33);
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(-8deg); }
+  50% { transform: translateY(-14px) rotate(5deg); }
+}
+section { padding: 75px 8%; }
+.section-heading { text-align: center; margin-bottom: 38px; }
+.section-heading h2 {
+  color: var(--brown);
+  font: bold 38px Georgia, serif;
+  margin-bottom: 10px;
+}
+.section-heading p { color: #766451; }
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+  align-items: center;
+}
+.about-art {
+  min-height: 280px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #ead2a9, #c58b36);
+  display: grid;
+  place-items: center;
+  font-size: 120px;
+}
+.about h2 { font: bold 36px Georgia, serif; color: var(--brown); margin-bottom: 15px; }
+.about p { margin-bottom: 14px; }
+.product-card {
+  max-width: 440px;
+  margin: auto;
+  background: white;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px #40251616;
+  text-align: center;
+}
+.product-image {
+  background: linear-gradient(135deg, #e9d0a6, #f9edda);
+  padding: 35px;
+  font-size: 100px;
+}
+.product-info { padding: 25px; }
+.product-info h3 { color: var(--brown); font: bold 27px Georgia, serif; }
+.price { color: #a66d20; font-size: 30px; font-weight: bold; margin: 12px 0; }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.gallery-card {
+  background: #f0dfc3;
+  border-radius: 18px;
+  min-height: 170px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 25px;
+  color: var(--brown);
+}
+.gallery-card span { font-size: 65px; display: block; }
+.checkout {
+  background: #f1e3ce;
+}
+.order-panel {
+  max-width: 650px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 22px;
+  box-shadow: 0 10px 30px #40251614;
+}
+form { display: grid; gap: 15px; }
+label { font-weight: bold; color: var(--brown); }
+input, textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #d8c6ae;
+  border-radius: 10px;
+  font: inherit;
+  margin-top: 6px;
+}
+textarea { min-height: 90px; resize: vertical; }
+.total {
+  background: var(--cream);
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--brown);
+}
+form button { font-size: 16px; }
+.small-note { font-size: 13px; color: #766451; }
+.contact {
+  text-align: center;
+  background: var(--brown);
+  color: white;
+}
+.contact h2 { color: #f2ce91; font: bold 36px Georgia, serif; margin-bottom: 15px; }
+.contact a { color: #f2ce91; }
+footer {
+  text-align: center;
+  padding: 22px;
+  background: #21140d;
+  color: #ead9c3;
+  font-size: 13px;
+}
+@media (max-width: 700px) {
+  header { flex-direction: column; }
+  nav { flex-wrap: wrap; justify-content: center; gap: 13px; }
+  .hero { text-align: center; padding: 60px 7%; }
+  .peanut-art { margin: 20px auto 0; font-size: 100px; }
+  .about { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: 1fr; }
+  section { padding: 55px 7%; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#home">
+    <img src="TerriNuts%20Peanut%20Harvest%20Logo.png" alt="TerriNuts logo">
+  </a>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#product">Product</a>
+    <a href="#order">Order</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="order-button" href="#order">Order Now</a>
+</header>
+
+<main>
+  <div class="hero" id="home">
+    <div class="hero-content">
+      <div class="eyebrow">A little taste of goodness</div>
+      <h1>Goodness in<br>every <span>peanut.</span></h1>
+      <p>Discover TerriNuts peanuts, packed in a convenient 250g size. Simple, tasty goodness from Nairobi, Kenya.</p>
+      <a class="order-button" href="#order">Place an Order</a>
+      <div class="hero-note">TerriNuts · Nairobi, Kenya</div>
+    </div>
+    <div class="peanut-art" aria-hidden="true">🥜</div>
+  </div>
+
+  <section id="about">
+    <div class="about">
+      <div class="about-art" aria-hidden="true">🥜</div>
+      <div>
+        <div class="eyebrow">Welcome to TerriNuts</div>
+        <h2>Small pack. Big peanut goodness.</h2>
+        <p>TerriNuts brings you peanuts in a handy 250g pack, perfect for enjoying and sharing.</p>
+        <p>We're based in Nairobi, Kenya. Place your order using our simple WhatsApp checkout.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="product">
+    <div class="section-heading">
+      <h2>Our Product</h2>
+      <p>One product, one simple price.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-image" aria-hidden="true">🥜</div>
+      <div class="product-info">
+        <h3>TerriNuts Peanuts</h3>
+        <p>250g pack</p>
+        <div class="price">KSh 100</div>
+        <a class="order-button" href="#order">Order This Product</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-heading">
+      <h2>A Peanut-Loving Kind of Goodness</h2>
+      <p>TerriNuts keeps it simple: peanuts in every pack.</p>
+    </div>
+    <div class="gallery">
+      <div class="gallery-card"><div><span>🥜</span><strong>Peanut goodness</strong></div></div>
+      <div class="gallery-card"><div><span>🌰</span><strong>Ready to enjoy</strong></div></div>
+      <div class="gallery-card"><div><span>🤎</span><strong>Made for sharing</strong></div></div>
+    </div>
+  </section>
+
+  <section class="checkout" id="order">
+    <div class="section-heading">
+      <h2>Place Your Order</h2>
+      <p>Enter your details and send your order directly to TerriNuts on WhatsApp.</p>
+    </div>
+    <div class="order-panel">
+      <form id="orderForm">
+        <label>
+          Your name
+          <input id="customerName" type="text" placeholder="Enter your name" required>
+        </label>
+        <label>
+          Your phone number
+          <input id="customerPhone" type="tel" placeholder="Enter your phone number" required>
+        </label>
+        <label>
+          Your location
+          <input id="customerLocation" type="text" placeholder="e.g. Nairobi, Kasarani" required>
+        </label>
+        <label>
+          Quantity (250g packs)
+          <input id="quantity" type="number" min="1" value="1" required>
+        </label>
+        <label>
+          Extra instructions (optional)
+          <textarea id="instructions" placeholder="Any additional order information?"></textarea>
+        </label>
+        <div class="total">
+          <span>Total</span>
+          <span id="totalPrice">KSh 100</span>
+        </div>
+        <button type="submit">Send Order on WhatsApp</button>
+        <p class="small-note">This sends your order details to WhatsApp. Payment is not collected on this website.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Get in Touch</h2>
+    <p>Have a question or want to place an order?</p>
+    <p>Phone: <a href="tel:0718188346">0718 188 346</a></p>
+    <p>WhatsApp: <a href="https://wa.me/254718188346">Chat with TerriNuts</a></p>
+    <p>Location: Nairobi, Kenya</p>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> TerriNuts. All rights reserved.
+</footer>
+
+<script>
+const quantityInput = document.getElementById("quantity");
+const totalPrice = document.getElementById("totalPrice");
+const pricePerPack = 100;
+
+function updateTotal() {
+  let quantity = Math.max(1, Number(quantityInput.value) || 1);
+  totalPrice.textContent = "KSh " + (quantity * pricePerPack).toLocaleString("en-KE");
+}
+quantityInput.addEventListener("input", updateTotal);
+document.getElementById("year").textContent = new Date().getFullYear();
+
+document.getElementById("orderForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
+  const location = document.getElementById("customerLocation").value.trim();
+  const quantity = Math.max(1, Number(quantityInput.value) || 1);
+  const instructions = document.getElementById("instructions").value.trim();
+  const total = quantity * pricePerPack;
+
+  const message =
+    "Hello TerriNuts! I would like to place an order.%0A%0A" +
+    "Name: " + encodeURIComponent(name) + "%0A" +
+    "Phone: " + encodeURIComponent(phone) + "%0A" +
+    "Location: " + encodeURIComponent(location) + "%0A" +
+    "Product: TerriNuts Peanuts (250g)%0A" +
+    "Quantity: " + quantity + "%0A" +
+    "Total: KSh " + total + "%0A" +
+    "Instructions: " + encodeURIComponent(instructions || "None");
+
+  window.open("https://wa.me/254718188346?text=" + message, "_blank");
+});
+</script>
+</body>
+</html>
